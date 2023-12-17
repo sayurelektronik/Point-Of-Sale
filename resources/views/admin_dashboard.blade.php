@@ -89,7 +89,8 @@
 
     <!-- App js-->
     <script src="{{ asset('backend/assets/js/app.min.js') }}"></script>
-
+    
+    {{-- toastr --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>

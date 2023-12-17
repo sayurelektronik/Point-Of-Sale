@@ -1,6 +1,6 @@
 @extends('admin_dashboard')
-@section('admin')
 
+@section('admin')
 <div class="content">
 
     <!-- Start Content-->

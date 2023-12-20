@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +35,15 @@ require __DIR__.'/auth.php';
 Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
 Route::get('/logout', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout.page');
 
-// auth 
+// auth
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/change/password', [AdminController::class, 'ChangePassword'])->name('change.password');
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
+
+    // employee all route
+    Route::controller(EmployeeController::class)->group(function() {
+       Route::get('/all/employee', 'AllEmployee')->name('all.employee');
+    });
 });

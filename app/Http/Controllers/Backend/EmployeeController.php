@@ -13,4 +13,8 @@ class EmployeeController extends Controller
 
         return view('backend.employee.all_employee', compact('employee'));
     }
+
+    public function AddEmployee() {
+        return view('backend.employee.add_employee');
+    }
 }

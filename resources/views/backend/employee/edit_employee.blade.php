@@ -30,8 +30,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form method="POST" action="{{ route('employee.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('employee.update') }}" enctype="multipart/form-data">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $employee->id }}">
+
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Edit Employee</h5>
                                 <div class="row">
                                     <div class="col-md-6">

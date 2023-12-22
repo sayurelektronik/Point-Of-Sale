@@ -10,38 +10,42 @@ use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
-    public function AllEmployee() {
+    public function AllEmployee()
+    {
         $employee = Employee::latest()->get();
 
         return view('backend.employee.all_employee', compact('employee'));
     }
 
-    public function AddEmployee() {
+    public function AddEmployee()
+    {
         return view('backend.employee.add_employee');
     }
 
-    public function StoreEmployee(Request $request){
+    public function StoreEmployee(Request $request)
+    {
 
-        $validateData = $request->validate([
-            'name' => 'required|max:200',
-            'email' => 'required|unique:employees|max:200',
-            'phone' => 'required|max:200',
-            'address' => 'required|max:400',
-            'salary' => 'required|max:200',
-            'vacation' => 'required|max:200',
-            'experience' => 'required',
-            'image' => 'required',
-        ],
+        $validateData = $request->validate(
+            [
+                'name' => 'required|max:200',
+                'email' => 'required|unique:employees|max:200',
+                'phone' => 'required|max:200',
+                'address' => 'required|max:400',
+                'salary' => 'required|max:200',
+                'vacation' => 'required|max:200',
+                'experience' => 'required',
+                'image' => 'required',
+            ],
 
-        [
-            'name.required' => 'This Employee Name Field is Required'
-        ]
-    );
+            [
+                'name.required' => 'This Employee Name Field is Required'
+            ]
+        );
 
         $image = $request->file('image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(300,300)->save('upload/employee/'.$name_gen);
-        $save_url = 'upload/employee/'.$name_gen;
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300, 300)->save('upload/employee/' . $name_gen);
+        $save_url = 'upload/employee/' . $name_gen;
 
         Employee::insert([
 
@@ -58,7 +62,7 @@ class EmployeeController extends Controller
 
         ]);
 
-         $notification = array(
+        $notification = array(
             'message' => 'Employee Inserted Successfully',
             'alert-type' => 'success'
         );
@@ -66,22 +70,24 @@ class EmployeeController extends Controller
         return redirect()->route('all.employee')->with($notification);
     }
 
-    public function EditEmployee($id) {
+    public function EditEmployee($id)
+    {
 
         $employee = Employee::findOrFail($id);
 
         return view('backend.employee.edit_employee', compact('employee'));
     }
 
-    public function UpdateEmployee(Request $request) {
+    public function UpdateEmployee(Request $request)
+    {
 
         $employee_id = $request->id;
 
         if ($request->file('image')) {
             $image = $request->file('image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(300,300)->save('upload/employee/'.$name_gen);
-            $save_url = 'upload/employee/'.$name_gen;
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save('upload/employee/' . $name_gen);
+            $save_url = 'upload/employee/' . $name_gen;
 
             Employee::findOrFail($employee_id)->update([
 
@@ -129,9 +135,10 @@ class EmployeeController extends Controller
         }
     }
 
-    public function DeleteEmployee($id) {
+    public function DeleteEmployee($id)
+    {
 
-        $employee_img= Employee::findOrFail($id);
+        $employee_img = Employee::findOrFail($id);
         $img = $employee_img->image;
         unlink($img);
 

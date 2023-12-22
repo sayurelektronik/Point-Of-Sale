@@ -48,7 +48,7 @@
                                 <a href="{{ route('all.customer') }}"">All Customer</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.employee') }}"">All Customer</a>
+                                <a href="{{ route('add.customer') }}"">Add Customer</a>
                             </li>
                         </ul>
                     </div>

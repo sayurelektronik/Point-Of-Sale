@@ -81,6 +81,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/all/advance/salary', 'AllAdvanceSalary')->name('all.advance.salary');
         Route::get('/add/advance/salary', 'AddAdvanceSalary')->name('add.advance.salary');
         Route::post('/advance/salary/store', 'AdvanceSalaryStore')->name('advance.salary.store');
+        Route::get('/edit/advance/salary/{id}', 'EditAdvanceSalary')->name('edit.advance.salary');
+        Route::post('/advance/salary/update', 'AdvanceSalaryUpdate')->name('advance.salary.update');
+        Route::get('/delete/advance/salary/{id}', 'DeleteAdvanceSalary')->name('delete.advance.salary');
 
      });
 });

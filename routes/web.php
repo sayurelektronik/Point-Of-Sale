@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function(){
 
       // supplier all route
     Route::controller(SalaryController::class)->group(function() {
+        Route::get('/all/advance/salary', 'AllAdvanceSalary')->name('all.advance.salary');
         Route::get('/add/advance/salary', 'AddAdvanceSalary')->name('add.advance.salary');
 
      });

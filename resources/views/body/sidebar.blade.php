@@ -73,12 +73,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarEmail" data-bs-toggle="collapse">
+                    <a href="#salary" data-bs-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
                         <span> Employee Salary </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEmail">
+                    <div class="collapse" id="salary">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.advance.salary') }}"">All Advance Salary</a>

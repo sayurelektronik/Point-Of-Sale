@@ -97,12 +97,12 @@
                 </li>
 
                 <li>
-                    <a href="#attendence" data-bs-toggle="collapse">
+                    <a href="#attendance" data-bs-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Employee attendence </span>
+                        <span> Employee Attendance </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="attendence">
+                    <div class="collapse" id="attendance">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('employee.attend.list') }}"">Employee Attendance List</a>

@@ -37,7 +37,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <h4>
-                                <a href="  " class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i>Employee
+                                <a href="{{ route('employee.attend.list') }}" class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i>Employee
                                     Attendance List</a>
                             </h4>
                         </ol>
@@ -50,7 +50,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action=" " method="post" id="myForm">
+                        <form action="{{ route('employee.attend.store') }}" method="post" id="myForm">
                             @csrf
                             <div class="form-group col-md-4">
                                 <label for="date" class="control-label">Attendance Date</label>

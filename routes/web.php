@@ -100,5 +100,6 @@ Route::middleware(['auth'])->group(function(){
      Route::controller(AttendenceController::class)->group(function() {
         Route::get('/employee/attend/list', 'EmployeeAttendenceList')->name('employee.attend.list');
         Route::get('/add/employee/attend', 'AddEmployeeAttendence')->name('add.employee.attend');
+        Route::post('/employee/attend//store', 'EmployeeAttendenceStore')->name('employee.attend.store');
      });
 });

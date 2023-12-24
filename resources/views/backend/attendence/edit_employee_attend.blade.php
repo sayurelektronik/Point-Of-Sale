@@ -37,8 +37,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <h4>
-                                <h4>Edit Employee Attendance</h4>
-                                <a href="{{ route('employee.attend.list') }}" class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i>Employee
+                                <a href="{{ route('employee.attend.list') }}" class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i> Employee
                                     Attendance List</a>
                             </h4>
                         </ol>
@@ -80,7 +79,7 @@
                                 <tbody>
                                     @foreach ($editData as $key => $item)
                                     <tr class="text-center">
-                                        <input type="hidden" name="employee_id[]" value="{{$item->id}}"
+                                        <input type="hidden" name="employee_id[]" value="{{ $item->employee_id }}"
                                             class="employee_id">
                                         <td>{{$key+1}}</td>
                                         <td>{{ $item['employee']['name'] }}</td>

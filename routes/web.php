@@ -90,5 +90,6 @@ Route::middleware(['auth'])->group(function(){
     // pay salary all route
      Route::controller(SalaryController::class)->group(function() {
         Route::get('/pay/salary', 'PaySalary')->name('pay.salary');
+        Route::get('/pay/now/salary/{id}', 'PayNowSalary')->name('pay.now.salary');
      });
 });

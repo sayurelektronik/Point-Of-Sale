@@ -23,7 +23,7 @@ class SalaryController extends Controller
         $validateData = $request->validate([
             'month' => 'required',
             'year' => 'required',
-            
+
         ]);
 
         $month = $request->month;
@@ -108,5 +108,12 @@ class SalaryController extends Controller
         $employee = Employee::latest()->get();
 
         return view('backend.salary.pay_salary', compact('employee'));
+    }
+
+    public function PayNowSalary($id) {
+
+        $paysalary = Employee::findOrFail($id);
+
+        return view('backend.salary.paid_salary', compact('paysalary'));
     }
 }

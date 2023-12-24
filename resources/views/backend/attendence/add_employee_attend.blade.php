@@ -86,7 +86,7 @@
                                         <td colspan="3">
                                             <div class="switch-toggle switch-3 switch-candy">
                                                 <input class="present" id="present{{$key}}" name="attend_status{{$key}}"
-                                                    value="present" type="radio" checked="checked">
+                                                    value="Present" type="radio" checked="checked">
 
                                                 <label for="present{{$key}}">Present</label>
                                                 <input class="leave" id="leave{{$key}}" name="attend_status{{$key}}"

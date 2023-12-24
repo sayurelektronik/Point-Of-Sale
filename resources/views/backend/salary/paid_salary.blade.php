@@ -30,8 +30,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form method="POST" action="{{ route('advance.salary.store') }}">
+                            <form method="POST" action="{{ route('employee.salary.store') }}">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $paysalary->id }}">
+
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Add Advance Salary</h5>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -44,23 +47,28 @@
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">Salary Month</label>
                                             <strong style="color: #fff;">{{ date("F", strtotime('-1 month')) }}</strong>
+                                            <input type="hidden" name="month" value="{{ date("F", strtotime('-1 month')) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">Employee Salary</label>
                                             <strong style="color: #fff;">{{ $paysalary->salary }}</strong>
+                                            <input type="hidden" name="paid_amount" value="{{ $paysalary->salary }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">Advance Salary</label>
                                             <strong style="color: #fff;">{{ $paysalary['advance']['advance_salary'] }}</strong>
+                                            <input type="hidden" name="advance_salary" value="{{ $paysalary['advance']['advance_salary'] }}">
                                         </div>
                                     </div>
+
                                     @php
                                         $amount = $paysalary->salary - $paysalary['advance']['advance_salary'];
                                     @endphp
+
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="firstname" class="form-label">Due Salary</label>
@@ -71,12 +79,14 @@
                                                     {{ round($amount) }}
                                                 @endif
                                             </strong>
+
+                                            <input type="hidden" name="due_salary" value="{{ round($amount) }}">
                                         </div>
                                     </div>
                                 </div> <!-- end row -->
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
-                                            class="mdi mdi-content-save"></i> Paid Salary</button>
+                                            class="mdi mdi-content-save"></i> Paid Salary`</button>
                                 </div>
                             </form>
                         </div>

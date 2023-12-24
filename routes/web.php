@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AttendenceController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\SupplierController;
@@ -93,5 +94,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/pay/now/salary/{id}', 'PayNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
+     });
+
+     // Attendence all route
+     Route::controller(AttendenceController::class)->group(function() {
+        Route::get('/employee/attend/list', 'EmployeeAttendenceList')->name('employee.attend.list');
      });
 });

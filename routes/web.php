@@ -109,5 +109,6 @@ Route::middleware(['auth'])->group(function(){
      // Category all route
      Route::controller(CategoryController::class)->group(function() {
         Route::get('/all/category', 'AllCategory')->name('all.category');
+        Route::post('/store/category', 'StoreCategory')->name('category.store');
      });
 });

@@ -126,6 +126,9 @@
     <!-- Js -->
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 
+    <!-- Validate Js -->
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
     {{-- toastr --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

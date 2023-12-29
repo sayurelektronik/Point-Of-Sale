@@ -30,18 +30,18 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form method="POST" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                            <form id="myForm" method="POST" action="{{ route('customer.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Add Product</h5>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group form-group mb-3">
                                             <label for="firstname" class="form-label">Product Name</label>
                                             <input type="text" name="product_name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Category</label>
                                             <select name="category_id" class="form-select" id="example-select">
                                                 <option selected disabled>Select Category </option>
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Supplier</label>
                                             <select name="supplier_id" class="form-select" id="example-select">
                                                 <option selected disabled>Select Supplier </option>
@@ -63,49 +63,49 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Product Code</label>
                                             <input type="text" name="product_code" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Product Garage</label>
                                             <input type="text" name="product_garage" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Product Store</label>
                                             <input type="text" name="product_store" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Buying Date</label>
                                             <input type="date" name="buying_date" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Expire Date</label>
                                             <input type="date" name="expire_date" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Buying Price</label>
                                             <input type="text" name="buying_price" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="firstname" class="form-label">Selling Price</label>
                                             <input type="text" name="selling_price" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="mb-3">
+                                        <div class="form-group mb-3">
                                             <label for="example-fileinput" class="form-label">Customer Image</label>
                                             <input type="file" name="product_image" id="image" class="form-control">
                                         </div>
@@ -136,6 +136,96 @@
     </div> <!-- container -->
 
 </div> <!-- content -->
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                product_name: {
+                    required : true,
+                },
+                category_id: {
+                    required : true,
+                },
+                supplier_id: {
+                    required : true,
+                },
+                product_code: {
+                    required : true,
+                },
+                product_garage: {
+                    required : true,
+                },
+                product_store: {
+                    required : true,
+                },
+                buying_date: {
+                    required : true,
+                },
+                expire_date: {
+                    required : true,
+                },
+                buying_price: {
+                    required : true,
+                },
+                selling_price: {
+                    required : true,
+                },
+                product_image: {
+                    required : true,
+                },
+            },
+            messages :{
+                product_name: {
+                    required : 'Please Enter Product Name',
+                },
+                category_id: {
+                    required : 'Please Select Category',
+                },
+                supplier_id: {
+                    required : 'Please Select Supplier',
+                },
+                product_code: {
+                    required : 'Please Enter Product Code',
+                },
+                product_garage: {
+                    required : 'Please Enter Product Garage',
+                },
+                product_store: {
+                    required : 'Please Enter Product Store',
+                },
+                buying_date: {
+                    required : 'Please Select Buying Date',
+                },
+                expire_date: {
+                    required : 'Please Select Expire Date',
+                },
+                buying_price: {
+                    required : 'Please Enter Buying Price',
+                },
+                selling_price: {
+                    required : 'Please Enter Selling Price',
+                },
+                product_image: {
+                    required : 'Please Select Product Image',
+                },
+
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
+</script>
 
 <script type="text/javascript">
 

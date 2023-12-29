@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form id="myForm" method="POST" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                            <form id="myForm" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Add Product</h5>
                                 <div class="row">

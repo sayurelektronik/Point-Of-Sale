@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ExpenseController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Models\Expense;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,5 +131,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/import/product', 'ImportProduct')->name('import.product');
         Route::get('/export/product', 'Export')->name('export');
         Route::post('/import/product', 'Import')->name('import');
+     });
+
+     // Expense all route
+     Route::controller(ExpenseController::class)->group(function() {
+        Route::get('/add/expense', 'AddExpense')->name('add.expense');
      });
 });

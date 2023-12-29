@@ -136,5 +136,6 @@ Route::middleware(['auth'])->group(function(){
      // Expense all route
      Route::controller(ExpenseController::class)->group(function() {
         Route::get('/add/expense', 'AddExpense')->name('add.expense');
+        Route::get('/store/expense', 'StoreExpense')->name('expense.store');
      });
 });

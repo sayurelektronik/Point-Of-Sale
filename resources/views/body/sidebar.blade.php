@@ -15,6 +15,13 @@
                         <span> Dashboard </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('pos') }}">
+                        <span class="badge bg-pink float-end">New</span>
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> POS </span>
+                    </a>
+                </li>
 
                 <li class="menu-title mt-2">Apps</li>
 

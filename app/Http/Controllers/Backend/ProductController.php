@@ -13,14 +13,16 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductController extends Controller
 {
-    public function AllProduct() {
+    public function AllProduct()
+    {
 
         $product = Product::latest()->get();
 
         return view('backend.product.all_product', compact('product'));
     }
 
-    public function AddProduct() {
+    public function AddProduct()
+    {
 
         $supplier = Supplier::latest()->get();
         $category = Category::latest()->get();
@@ -31,7 +33,7 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
 
-        $pcode = IdGenerator::generate(['table' => 'products','field' => 'product_code','length' => 4, 'prefix' => 'PC' ]);
+        $pcode = IdGenerator::generate(['table' => 'products', 'field' => 'product_code', 'length' => 4, 'prefix' => 'PC']);
 
         $image = $request->file('product_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
@@ -122,7 +124,8 @@ class ProductController extends Controller
         }
     }
 
-    public function EditProduct($id) {
+    public function EditProduct($id)
+    {
 
         $product = Product::findOrFail($id);
         $supplier = Supplier::latest()->get();
@@ -148,11 +151,11 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function BarcodeProduct($id) {
+    public function BarcodeProduct($id)
+    {
 
         $product = Product::findOrFail($id);
 
         return view('backend.product.barcode_product', compact('product'));
     }
-
 }

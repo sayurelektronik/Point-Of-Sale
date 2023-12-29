@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form id="myForm" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('import') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">

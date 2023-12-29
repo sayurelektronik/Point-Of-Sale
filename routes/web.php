@@ -128,5 +128,6 @@ Route::middleware(['auth'])->group(function(){
 
         Route::get('/import/product', 'ImportProduct')->name('import.product');
         Route::get('/export/product', 'Export')->name('export');
+        Route::post('/import/product', 'Import')->name('import');
      });
 });

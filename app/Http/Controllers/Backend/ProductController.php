@@ -158,4 +158,9 @@ class ProductController extends Controller
 
         return view('backend.product.barcode_product', compact('product'));
     }
+
+    public function ImportProduct() {
+
+        return view('backend.product.import_product');
+    }
 }

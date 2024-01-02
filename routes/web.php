@@ -145,8 +145,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/month/expense', 'MonthExpense')->name('month.expense');
         Route::get('/year/expense', 'YearExpense')->name('year.expense');
      });
+     
      // POS all route
      Route::controller(PosController::class)->group(function() {
         Route::get('/pos', 'Pos')->name('pos');
+        Route::post('/add-cart', 'AddCart');
      });
 });

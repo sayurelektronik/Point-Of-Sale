@@ -48,8 +48,11 @@
                                         <tr>
                                             <td>{{ $item->name }}</td>
                                             <td>
-                                                <input type="number" value="{{ $item->qty }}" style="width: 40px;" min="1">
-                                                <button type="submit" class="btn btn-sm btn-success" style="margin-top:-2px;"><i class="fas fa-check"></i></button>
+                                                <form action="{{ url('/cart-update/'.$item->rowId) }}" method="POST">
+                                                    @csrf
+                                                    <input type="number" name="qty" value="{{ $item->qty }}" style="width: 40px;" min="1">
+                                                    <button type="submit" class="btn btn-sm btn-success" style="margin-top:-2px;"><i class="fas fa-check"></i></button>
+                                                </form>
                                             </td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->price*$item->qty }}</td>
@@ -62,10 +65,10 @@
 
                         <div class="bg-primary">
                             <br>
-                            <p style="font-size: 18px; color: #ffffff">Quantity</p>
-                            <p style="font-size: 18px; color: #ffffff">SubTotal</p>
-                            <p style="font-size: 18px; color: #ffffff">Vat</p>
-                            <p><h2 class="text-white">Total</h2><h1 class="text-white"></h1></p>
+                            <p style="font-size: 18px; color: #ffffff">Jumlah : {{ Cart::count() }}</p>
+                            <p style="font-size: 18px; color: #ffffff">SubTotal : Rp. {{ Cart::subtotal() }}</p>
+                            <p style="font-size: 18px; color: #ffffff">Pajak : Rp. {{ Cart::tax() }}</p>
+                            <p><h2 class="text-white">Total</h2><h1 class="text-white">Rp. {{ Cart::total() }}</h1></p>
                             <br>
                         </div>
 

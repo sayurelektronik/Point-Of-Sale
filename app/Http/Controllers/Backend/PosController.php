@@ -42,4 +42,17 @@ class PosController extends Controller
 
         return view('backend.pos.text_item', compact('product_item'));
     }
+
+    public function CartUpdate(Request $request,$rowId) {
+
+        $qty = $request->qty;
+        $update = Cart::update($rowId, $qty);
+
+        $notification = array(
+            'message' => 'Cart Update Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

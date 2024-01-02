@@ -39,14 +39,23 @@
                                     </tr>
                                 </thead>
 
+                                @php
+                                    $allcart = Cart::content();
+                                @endphp
+
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="number" value="0" style="width: 40px;" min="1"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><a href=""><i class="fas fa-trash-alt" style="color: #ffffff"></i></a></td>
-                                    </tr>
+                                    @foreach ($allcart as $item)
+                                        <tr>
+                                            <td>{{ $item->name }}</td>
+                                            <td>
+                                                <input type="number" value="{{ $item->qty }}" style="width: 40px;" min="1">
+                                                <button type="submit" class="btn btn-sm btn-success" style="margin-top:-2px;"><i class="fas fa-check"></i></button>
+                                            </td>
+                                            <td>{{ $item->price }}</td>
+                                            <td>{{ $item->price*$item->qty }}</td>
+                                            <td><a href=""><i class="fas fa-trash-alt" style="color: #ffffff"></i></a></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -103,7 +112,7 @@
                                                 <input type="hidden" name="name" value="{{ $item->product_name }}">
                                                 <input type="hidden" name="qty" value="1">
                                                 <input type="hidden" name="price" value="{{ $item->selling_price }}">
-                                                
+
                                                 <td>{{ $key+1 }}</td>
                                                 <td><img src="{{ asset($item->product_image) }}" style="width:50px; height:40px;" alt=""></td>
                                                 <td>{{ $item->product_name }}</td>

@@ -61,4 +61,13 @@ class OrderController extends Controller
         $orders = Order::where('order_status','pending')->get();
         return view('backend.order.pending_order',compact('orders'));
     }
+
+    public function OrderDetails($order_id){
+
+        $order = Order::where('id',$order_id)->first();
+
+        $orderItem = Orderdetails::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+        return view('backend.order.order_details',compact('order','orderItem'));
+
+    }
 }

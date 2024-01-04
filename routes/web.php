@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PosController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Models\Expense;
 
 /*

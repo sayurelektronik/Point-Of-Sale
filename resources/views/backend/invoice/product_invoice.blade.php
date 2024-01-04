@@ -13,12 +13,10 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Extra Pages</a></li>
-                            <li class="breadcrumb-item active">Invoice</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Customer Invoice</a></li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Invoice</h4>
+                    <h4 class="page-title">Customer Invoice</h4>
                 </div>
             </div>
         </div>
@@ -34,13 +32,13 @@
                                 <div class="auth-logo">
                                     <div class="logo logo-dark">
                                         <span class="logo-lg">
-                                            <img src="assets/images/logo-dark.png" alt="" height="22">
+                                            <img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="" height="22">
                                         </span>
                                     </div>
 
                                     <div class="logo logo-light">
                                         <span class="logo-lg">
-                                            <img src="assets/images/logo-light.png" alt="" height="22">
+                                            <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="" height="22">
                                         </span>
                                     </div>
                                 </div>
@@ -53,10 +51,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mt-3">
-                                    <p><b>Hello, Stanley Jones</b></p>
-                                    <p class="text-muted">Thanks a lot because you keep purchasing our products. Our company
-                                        promises to provide high quality products for you as well as outstanding
-                                        customer service for every transaction. </p>
+                                    <p><b>Hello, {{ $customer->name }}</b></p>
+
                                 </div>
 
                             </div><!-- end col -->
@@ -64,7 +60,7 @@
                                 <div class="mt-3 float-end">
                                     <p><strong>Order Date : </strong> <span class="float-end"> &nbsp;&nbsp;&nbsp;&nbsp; Jan 17, 2016</span></p>
                                     <p><strong>Order Status : </strong> <span class="float-end"><span class="badge bg-danger">Unpaid</span></span></p>
-                                    <p><strong>Order No. : </strong> <span class="float-end">000028 </span></p>
+                                    <p><strong>Invoice No. : </strong> <span class="float-end">000028 </span></p>
                                 </div>
                             </div><!-- end col -->
                         </div>
@@ -74,20 +70,11 @@
                             <div class="col-sm-6">
                                 <h6>Billing Address</h6>
                                 <address>
-                                    Stanley Jones<br>
-                                    795 Folsom Ave, Suite 600<br>
-                                    San Francisco, CA 94107<br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                            </div> <!-- end col -->
-
-                            <div class="col-sm-6">
-                                <h6>Shipping Address</h6>
-                                <address>
-                                    Stanley Jones<br>
-                                    795 Folsom Ave, Suite 600<br>
-                                    San Francisco, CA 94107<br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                                    {{ $customer->address }} - {{ $customer->city }}
+                                    <br>
+                                    <abbr title="shopname">Shop Name::</abbr> {{ $customer->shopname }} <br>
+                                    <abbr title="Phone">Phone:</abbr> {{ $customer->phone }} <br>
+                                    <abbr title="Email">Email:</abbr> {{ $customer->email }}
                                 </address>
                             </div> <!-- end col -->
                         </div>
@@ -100,7 +87,7 @@
                                         <thead>
                                         <tr><th>#</th>
                                             <th>Item</th>
-                                            <th style="width: 10%">Hours</th>
+                                            <th style="width: 10%">Jumlah</th>
                                             <th style="width: 10%">Hours Rate</th>
                                             <th style="width: 10%" class="text-end">Total</th>
                                         </tr></thead>

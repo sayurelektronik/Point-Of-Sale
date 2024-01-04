@@ -157,4 +157,9 @@ Route::middleware(['auth'])->group(function(){
 
         Route::post('/create-invoice', 'CreateInvoice');
      });
+
+     // Order all route
+     Route::controller(OrderController::class)->group(function() {
+        Route::get('/final-invoice', 'FinalInvoice');
+     });
 });

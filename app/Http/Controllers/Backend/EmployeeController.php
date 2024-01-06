@@ -142,7 +142,7 @@ class EmployeeController extends Controller
         $img = $employee_img->image;
         unlink($img);
 
-        Employee::findOrFail($id)->delete();
+        Employee::findOrFail($id)->truncate();
 
         $notification = array(
             'message' => 'Employee Deleted Successfully',

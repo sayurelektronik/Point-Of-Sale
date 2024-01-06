@@ -144,7 +144,7 @@ class ProductController extends Controller
         $img = $product_img->product_image;
         unlink($img);
 
-        Product::findOrFail($id)->delete();
+        Product::findOrFail($id)->truncate();
 
         $notification = array(
             'message' => 'Product Deleted Successfully',

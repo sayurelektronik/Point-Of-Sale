@@ -146,7 +146,7 @@ class SupplierController extends Controller
         $img = $supplier_img->image;
         unlink($img);
 
-        Supplier::findOrFail($id)->delete();
+        Supplier::findOrFail($id)->truncate();
 
         $notification = array(
             'message' => 'Supplier Deleted Successfully',

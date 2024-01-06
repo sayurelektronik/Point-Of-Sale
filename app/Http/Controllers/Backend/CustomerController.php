@@ -142,7 +142,7 @@ class CustomerController extends Controller
         $img = $customer_img->image;
         unlink($img);
 
-        Customer::findOrFail($id)->delete();
+        Customer::findOrFail($id)->truncate();
 
         $notification = array(
             'message' => 'Customer Deleted Successfully',

@@ -56,7 +56,7 @@ class CategoryController extends Controller
 
     public function DeleteCategory($id) {
 
-        Category::findOrFail($id)->delete();
+        Category::findOrFail($id)->truncate();
 
         $notification = array(
             'message' => 'Category Deleted Successfully',

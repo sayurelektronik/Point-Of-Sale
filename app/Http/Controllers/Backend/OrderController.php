@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class OrderController extends Controller
@@ -99,10 +100,24 @@ class OrderController extends Controller
         return view('backend.order.complete_order',compact('orders'));
     }
 
-    public function StockManage(){
+    public function StockManage() {
 
         $product = Product::latest()->get();
         return view('backend.stock.all_stock',compact('product'));
+    }
 
-        }
+    public function OrderInvoice($order_id){
+
+       $order = Order::where('id',$order_id)->first();
+
+       $orderItem = Orderdetails::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+
+       $pdf = Pdf::loadView('backend.order.order_invoice', compact('order','orderItem'))->setPaper('a4')->setOption([
+               'tempDir' => public_path(),
+               'chroot' => public_path(),
+
+       ]);
+        return $pdf->download('invoice.pdf');
+
+   }
 }

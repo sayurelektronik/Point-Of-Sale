@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PosController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Models\Expense;
 
 /*
@@ -70,7 +71,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/edit/customer/{id}', 'EditCustomer')->name('edit.customer');
         Route::post('/update/customer', 'UpdateCustomer')->name('customer.update');
         Route::get('/delete/customer/{id}', 'DeleteCustomer')->name('delete.customer');
-     });
+    });
 
      // supplier all route
     Route::controller(SupplierController::class)->group(function() {
@@ -81,7 +82,7 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/update/supplier', 'UpdateSupplier')->name('supplier.update');
         Route::get('/delete/supplier/{id}', 'DeleteSupplier')->name('delete.supplier');
         Route::get('/details/supplier/{id}', 'DetailSupplier')->name('details.supplier');
-     });
+    });
 
     // advance salary all route
     Route::controller(SalaryController::class)->group(function() {
@@ -92,36 +93,36 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/advance/salary/update', 'AdvanceSalaryUpdate')->name('advance.salary.update');
         Route::get('/delete/advance/salary/{id}', 'DeleteAdvanceSalary')->name('delete.advance.salary');
 
-     });
+    });
 
     // pay salary all route
-     Route::controller(SalaryController::class)->group(function() {
+    Route::controller(SalaryController::class)->group(function() {
         Route::get('/pay/salary', 'PaySalary')->name('pay.salary');
         Route::get('/pay/now/salary/{id}', 'PayNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
-     });
+    });
 
-     // Attendence all route
-     Route::controller(AttendenceController::class)->group(function() {
+    // Attendence all route
+    Route::controller(AttendenceController::class)->group(function() {
         Route::get('/employee/attend/list', 'EmployeeAttendenceList')->name('employee.attend.list');
         Route::get('/add/employee/attend', 'AddEmployeeAttendence')->name('add.employee.attend');
         Route::post('/employee/attend//store', 'EmployeeAttendenceStore')->name('employee.attend.store');
         Route::get('/edit/employee/attend/{date}', 'EditEmployeeAttendence')->name('employee.attend.edit');
         Route::get('/view/employee/attend/{date}', 'ViewEmployeeAttendence')->name('employee.attend.view');
-     });
+    });
 
-     // Category all route
-     Route::controller(CategoryController::class)->group(function() {
+    // Category all route
+    Route::controller(CategoryController::class)->group(function() {
         Route::get('/all/category', 'AllCategory')->name('all.category');
         Route::post('/store/category', 'StoreCategory')->name('category.store');
         Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
         Route::post('/update/category', 'UpdateCategory')->name('category.update');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
-     });
+    });
 
-     // Product all route
-     Route::controller(ProductController::class)->group(function() {
+    // Product all route
+    Route::controller(ProductController::class)->group(function() {
         Route::get('/all/product', 'AllProduct')->name('all.product');
         Route::get('/add/product', 'AddProduct')->name('add.product');
         Route::post('/store/product', 'StoreProduct')->name('product.store');
@@ -133,10 +134,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/import/product', 'ImportProduct')->name('import.product');
         Route::get('/export/product', 'Export')->name('export');
         Route::post('/import/product', 'Import')->name('import');
-     });
+    });
 
-     // Expense all route
-     Route::controller(ExpenseController::class)->group(function() {
+    // Expense all route
+    Route::controller(ExpenseController::class)->group(function() {
         Route::get('/add/expense', 'AddExpense')->name('add.expense');
         Route::post('/store/expense', 'StoreExpense')->name('expense.store');
         Route::get('/today/expense', 'TodayExpense')->name('today.expense');
@@ -145,10 +146,10 @@ Route::middleware(['auth'])->group(function(){
 
         Route::get('/month/expense', 'MonthExpense')->name('month.expense');
         Route::get('/year/expense', 'YearExpense')->name('year.expense');
-     });
+    });
 
-     // POS all route
-     Route::controller(PosController::class)->group(function() {
+    // POS all route
+    Route::controller(PosController::class)->group(function() {
         Route::get('/pos', 'Pos')->name('pos');
         Route::post('/add-cart', 'AddCart');
         Route::get('/allitem', 'AllItem');
@@ -156,10 +157,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/cart-remove/{rowId}', 'CartRemove');
 
         Route::post('/create-invoice', 'CreateInvoice');
-     });
+    });
 
-     // Order all route
-     Route::controller(OrderController::class)->group(function() {
+    // Order all route
+    Route::controller(OrderController::class)->group(function() {
         Route::post('/final-invoice', 'FinalInvoice');
         Route::get('/pending/order','PendingOrder')->name('pending.order');
         Route::get('/order/details/{order_id}','OrderDetails')->name('order.details');
@@ -167,5 +168,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/complete/order','CompleteOrder')->name('complete.order');
         Route::get('/stock','StockManage')->name('stock.manage');
         Route::get('/order/invoice-download/{order_id}','OrderInvoice');
-     });
+    });
+
+    ///Permission All Route
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/all/permission','AllPermission')->name('all.permission');
+    });
 });

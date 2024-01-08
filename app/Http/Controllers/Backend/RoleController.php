@@ -9,18 +9,21 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    public function AllPermission(){
+    public function AllPermission()
+    {
 
         $permissions = Permission::all();
-        return view('backend.pages.permission.all_permission',compact('permissions'));
+        return view('backend.pages.permission.all_permission', compact('permissions'));
     }
 
-    public function AddPermission(){
+    public function AddPermission()
+    {
 
         return view('backend.pages.permission.add_permission');
     }
 
-    public function StorePermission(Request $request){
+    public function StorePermission(Request $request)
+    {
 
         $role = Permission::create([
             'name' => $request->name,
@@ -35,14 +38,16 @@ class RoleController extends Controller
         return redirect()->route('all.permission')->with($notification);
     }
 
-    public function EditPermission($id){
+    public function EditPermission($id)
+    {
 
         $permission = Permission::findOrFail($id);
-        return view('backend.pages.permission.edit_permission',compact('permission'));
+        return view('backend.pages.permission.edit_permission', compact('permission'));
     }
 
 
-    public function UpdatePermission(Request $request){
+    public function UpdatePermission(Request $request)
+    {
 
         $per_id = $request->id;
 
@@ -61,7 +66,8 @@ class RoleController extends Controller
     }
 
 
-    public function DeletePermission($id){
+    public function DeletePermission($id)
+    {
 
         Permission::findOrFail($id)->delete();
 
@@ -71,5 +77,36 @@ class RoleController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function AllRoles()
+    {
+
+        $roles = Role::all();
+        return view('backend.pages.roles.all_roles', compact('roles'));
+    }
+
+
+    public function AddRoles()
+    {
+
+        return view('backend.pages.roles.add_roles');
+    }
+
+
+    public function StoreRoles(Request $request)
+    {
+
+        $role = Role::create([
+            'name' => $request->name,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Role Added Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles')->with($notification);
     }
 }

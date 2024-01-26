@@ -20,8 +20,7 @@ class RoleController extends Controller
     public function AddPermission()
     {
 
-        $permission_groups = User::getpermissionGroups();
-        return view('backend.pages.roles.add_roles_permission',compact('roles','permissions','permission_groups'));
+        return view('backend.pages.permission.add_permission');
     }
 
     public function StorePermission(Request $request)
